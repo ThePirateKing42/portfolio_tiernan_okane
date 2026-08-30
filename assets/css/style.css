@@ -1,0 +1,574 @@
+/* ============================================
+   Tiernan O'Kane — Engineering Portfolio
+   Technical / drafting-paper theme
+   ============================================ */
+
+:root {
+  --bg: #f2efe6;           /* off-white, aged paper */
+  --bg-soft: #ece7d9;
+  --ink: #171614;           /* near-black ink */
+  --ink-soft: #5c584e;
+  --line: #cfc9b8;          /* hairline / border tone */
+  --line-strong: #171614;
+  --stamp: #8a2e1f;         /* muted blueprint/redline stamp accent */
+  --radius: 3px;
+  --max-width: 880px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle, rgba(23,22,20,0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+body.page-ready {
+  transition: opacity 0.32s ease, transform 0.32s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.page-leaving {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+h1, h2, h3 {
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+}
+
+a:hover {
+  color: var(--stamp);
+  border-color: var(--stamp);
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Layout containers ---------- */
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-header {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.page-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  border-bottom: none;
+}
+
+.brand:hover {
+  color: var(--stamp);
+}
+
+.back-link {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+.back-link:hover {
+  color: var(--stamp);
+  border-color: var(--stamp);
+}
+
+main {
+  padding: 64px 0 96px;
+}
+
+footer {
+  padding: 32px 0;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--line);
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Corner marks (technical drawing motif) ---------- */
+
+.crossed {
+  position: relative;
+}
+
+.crossed::before,
+.crossed::after {
+  content: "+";
+  position: absolute;
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+  color: var(--line);
+  line-height: 1;
+}
+
+.crossed::before { top: -7px; left: -7px; }
+.crossed::after { bottom: -7px; right: -7px; }
+
+/* ---------- Home page (hub) ---------- */
+
+.hero {
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 560px;
+  padding: 0 24px;
+  position: relative;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: lowercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.hero-eyebrow::before {
+  content: "// ";
+  color: var(--stamp);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 0 0 6px;
+}
+
+.hero .subtitle {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 0 0 40px;
+  letter-spacing: 0.02em;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.pill-link {
+  font-size: 0.82rem;
+  padding: 9px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.pill-link:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.pill-link.copied {
+  background: var(--stamp);
+  color: var(--bg);
+  border-color: var(--stamp);
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.nav-button {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Space Mono", monospace;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.nav-button .idx {
+  color: var(--stamp);
+  font-size: 0.85rem;
+}
+
+.nav-button .nav-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.78rem;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  letter-spacing: 0;
+}
+
+.nav-button:hover {
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateX(2px);
+}
+
+.nav-button:hover .idx,
+.nav-button:hover .nav-sub {
+  color: var(--bg-soft);
+}
+
+/* ---------- Category pages ---------- */
+
+.category-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.category-header .hero-eyebrow {
+  text-align: center;
+}
+
+.category-header h1 {
+  font-size: 1.9rem;
+  margin: 0 0 10px;
+}
+
+.category-header p {
+  color: var(--ink-soft);
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.project-card {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-card:hover {
+  transform: translateX(3px);
+  box-shadow: -3px 3px 0 var(--ink);
+}
+
+.project-card .thumb {
+  flex: 0 0 220px;
+  height: 160px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  filter: grayscale(15%);
+}
+
+.project-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card .card-body {
+  padding: 18px 22px 18px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card h2 {
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.project-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.tag {
+  display: inline-block;
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--stamp);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.tag::before {
+  content: "[ ";
+}
+.tag::after {
+  content: " ]";
+}
+
+/* ---------- Project detail pages ---------- */
+
+.project-hero {
+  margin-bottom: 40px;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 32px;
+}
+
+.project-hero h1 {
+  font-size: 1.7rem;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+
+.project-hero .meta {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.project-hero .description {
+  font-size: 0.92rem;
+  color: var(--ink);
+  max-width: 720px;
+}
+
+.project-hero .description p {
+  margin: 0 0 14px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 20px;
+  margin: 32px 0;
+}
+
+.media-item.full {
+  grid-column: 1 / -1;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  background: var(--bg-soft);
+}
+
+.caption {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 8px 8px 12px;
+  text-align: center;
+}
+
+@media (min-width: 641px) {
+  .media-item {
+    height: auto;
+  }
+
+  .media-item img,
+  .media-item video {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .media-item.full img,
+  .media-item.full video {
+    height: 420px;
+  }
+
+  .media-item video {
+    object-fit: contain;
+    background: var(--ink);
+  }
+}
+
+@media (max-width: 640px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-item {
+    height: auto;
+  }
+
+  .media-item img,
+  .media-item video {
+    height: auto;
+  }
+}
+
+.caption::before {
+  content: "fig. — ";
+  color: var(--stamp);
+}
+
+.doc-links {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.doc-links h3 {
+  font-size: 0.82rem;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.doc-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.doc-links a {
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-links a::before {
+  content: "↓ ";
+  color: var(--stamp);
+}
+
+.project-nav {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Resume page ---------- */
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.resume-header h1 {
+  font-size: 1.9rem;
+  margin: 0;
+}
+
+.resume-viewer {
+  width: 100%;
+  height: min(82vh, 1100px);
+  min-height: 600px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-soft);
+}
+
+.resume-viewer iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.resume-source {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-card .thumb {
+    flex: none;
+    width: 100%;
+    height: 180px;
+  }
+
+  .project-card .card-body {
+    padding: 16px 18px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .resume-viewer {
+    height: 75vh;
+    min-height: 520px;
+  }
+}
