@@ -181,7 +181,7 @@ footer {
 
 .hero h1 {
   font-size: 2.5rem;
-  margin: 0 0 6px;
+  margin: 0 0 40px;
 }
 
 .hero .subtitle {
@@ -200,27 +200,29 @@ footer {
 }
 
 .pill-link {
+  display: inline-block;
   font-size: 0.82rem;
-  padding: 9px 16px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
+  padding: 5px 0;
+  border: 0;
   color: var(--ink);
   text-transform: lowercase;
   letter-spacing: 0.04em;
-  background: var(--bg);
+  background: transparent;
   cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 .pill-link:hover {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  color: var(--ink);
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .pill-link.copied {
-  background: var(--stamp);
-  color: var(--bg);
-  border-color: var(--stamp);
+  color: var(--stamp);
+  background: transparent;
 }
 
 .nav-buttons {
@@ -572,3 +574,54 @@ footer {
     min-height: 520px;
   }
 }
+
+/* ============================================
+   Home page interactive effects
+   Plane + curved text banner
+   ============================================ */
+
+.hero {
+  position: relative;
+}
+
+/* ---------- Plane banner ---------- */
+
+.hero-links.banner-mode {
+  min-height: 0;
+  height: 0;
+  margin: 0;
+}
+
+.pill-link.banner-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  white-space: nowrap;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.plane-rig {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.plane-icon {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plane-rig {
+    display: none !important;
+  }
+}
+
